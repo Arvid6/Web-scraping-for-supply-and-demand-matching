@@ -11,7 +11,7 @@ class PostnordSpider(CrawlSpider):
     rules = (
         Rule(LinkExtractor(), callback='parse_item', follow=True),
     )
-    def parse(self, response):
+    def parse_item(self, response):
         self.links.append(response.url)
         for href in response.css('a::attr(href)'):
             yield response.follow(href, self.parse)
