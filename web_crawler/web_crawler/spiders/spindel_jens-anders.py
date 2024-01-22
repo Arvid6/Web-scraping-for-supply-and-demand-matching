@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import json
 
 #Intigers
-url = "https://www.frakttjanst.se/" #denna ska bytas---------------------------------------------------------------
+url = "https://www.llt.lulea.se/" #denna ska bytas---------------------------------------------------------------
 html = urlopen(url).read()
 soppa = BeautifulSoup(html, features="html.parser")
 
@@ -30,7 +30,7 @@ JensAndersjuveler = '\n'.join(chunk for chunk in bitar if chunk)
 print(JensAndersjuveler)
 
 #Slår ihop URL med innehåll
-momentan_data = url + "     " + JensAndersjuveler
+momentan_data = url + " :VGQH545: " + JensAndersjuveler + " :CGDE345: " # " :CGDE345: " Är koden för ny webbsida i json fil. Medans koden mellan webbsidan och htmlkoden är " :VGQH545: "
 
 #Kollar om json filen är tom
 try:
@@ -52,7 +52,7 @@ else:
         kolonisten = json.load(f)
 
     #Slår ihop nya datan med gamla datan
-    Slutet = kolonisten + "     " + momentan_data
+    Slutet = kolonisten + momentan_data
 
     #Sparar det till SlutetgottAlltgott.json
     with open("SlutetgottAlltgott.json", "w") as outfile:
