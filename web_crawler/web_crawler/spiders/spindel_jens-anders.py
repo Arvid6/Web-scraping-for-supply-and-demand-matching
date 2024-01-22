@@ -36,10 +36,10 @@ momentan_data = url + "     " + JensAndersjuveler
 try:
     with open('SlutetgottAlltgott.json', 'r') as f:
         data = json.load(f)
-    # If the file is not empty and contains valid JSON, data will contain that JSON
+    #Om datan lyckas laddas så blir tom 0
     tom = 0
 except json.JSONDecodeError:
-    # If the file is empty or not valid JSON, a JSONDecodeError will be raised
+    #Om filen är tom så sätts tom till 1
     tom = 1
 
 if tom == 1:
