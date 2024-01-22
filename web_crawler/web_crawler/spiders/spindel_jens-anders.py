@@ -34,7 +34,7 @@ momentan_data = url + " :VGQH545: " + JensAndersjuveler + " :CGDE345: " # " :CGD
 
 #Kollar om json filen är tom
 try:
-    with open('SlutetgottAlltgott.json', 'r') as f:
+    with open("SlutetgottAlltgott.json", "r") as f:
         data = json.load(f)
     #Om datan lyckas laddas så blir tom 0
     tom = 0
@@ -48,7 +48,7 @@ if tom == 1:
         json.dump(momentan_data, outfile)
 else:
     #Laddar Slutetgottaltinggott.json in i kolonisten
-    with open('SlutetgottAlltgott.json', 'r') as f:
+    with open("SlutetgottAlltgott.json", "r") as f:
         kolonisten = json.load(f)
 
     #Slår ihop nya datan med gamla datan
