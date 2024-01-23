@@ -44,6 +44,7 @@ class SpidermanSpider(CrawlSpider):
         # print(html)
         # print(JensAndersjuveler)
 
+
         # Slår ihop URL med innehåll
         momentan_data = url + " :VGQH545: " + JensAndersjuveler + " :CGDE345: "  # " :CGDE345: " Är koden för ny webbsida i json fil. Medans koden mellan webbsidan och htmlkoden är " :VGQH545: "
 
