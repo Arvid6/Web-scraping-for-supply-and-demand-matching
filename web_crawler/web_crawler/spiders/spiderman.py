@@ -10,8 +10,10 @@ import json
 
 class SpidermanSpider(CrawlSpider):
     name = "spiderman"
+    # Ska bytas till en lista av hemsidor som ska och kan sökas
     allowed_domains = ["shop.actionbutton.net"]
     start_urls = ["https://shop.actionbutton.net/"]
+    # Regler för hemsidor som söks
     rules = (
         Rule(LinkExtractor(), callback='parse_item', follow=True),
     )
