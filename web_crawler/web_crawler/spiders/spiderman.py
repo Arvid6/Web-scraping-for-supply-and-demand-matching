@@ -39,7 +39,7 @@ class SpidermanSpider(CrawlSpider):
         bitar = (phrase.strip() for line in rader for phrase in line.split("  "))
 
         # Tar bort onödiga blank spaces
-        JensAndersjuveler = '\n'.join(chunk for chunk in bitar if chunk)
+        JensAndersjuveler = ' '.join(chunk for chunk in bitar if chunk)
 
         # print(html)
         # print(JensAndersjuveler)
