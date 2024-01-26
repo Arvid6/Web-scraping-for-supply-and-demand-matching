@@ -7,15 +7,11 @@ from bs4 import BeautifulSoup
 
 class SpidermanSpider(CrawlSpider):
     name = "spiderman"
-    allowed_domains = ["shop.actionbutton.net", "llt.lulea.se"]
-    start_urls = ["https://shop.actionbutton.net/", "https://www.llt.lulea.se/"]
+    allowed_domains = ["shop.actionbutton.net", "llt.lulea.se", "theyard.sale"]
+    start_urls = ["https://shop.actionbutton.net/", "https://www.llt.lulea.se/", "https://theyard.sale/"]
     rules = (
         Rule(LinkExtractor(), callback='parse_item', follow=True),
     )
-
-    def start_requests(self):
-        for url in self.start_urls:
-            yield Request(url, dont_filter=True)
 
     def parse_item(self, response):
         soppa = BeautifulSoup(response.text, features="html.parser")
@@ -25,7 +21,7 @@ class SpidermanSpider(CrawlSpider):
 
         JensAndersjuveler = ' '.join(chunk for chunk in soppa.get_text().split() if chunk)
 
-        momentan_data = response.url + " :VGQH545: " + JensAndersjuveler + " :CGDE345: "
+        momentan_data = " :VGQH545: " + JensAndersjuveler + " :CGDE345: "
 
-        return {'data': momentan_data}
+        return {str(response.url)[8:]: momentan_data}
 
