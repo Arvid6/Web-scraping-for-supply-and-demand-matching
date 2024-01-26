@@ -9,8 +9,12 @@ class SpidermanSpider(CrawlSpider):
     name = "spiderman"
     allowed_domains = ["shop.actionbutton.net", "llt.lulea.se", "theyard.sale"]
     start_urls = ["https://shop.actionbutton.net/", "https://www.llt.lulea.se/", "https://theyard.sale/"]
+
+    keywords ['om-','about', 'info']
     rules = (
-        Rule(LinkExtractor(), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow=keywords), callback='parse_item', follow=True),
+
+        #Rule(LinkExtractor(), callback='parse_item', follow=True)
     )
 
     def parse_item(self, response):
