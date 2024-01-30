@@ -10,7 +10,7 @@ class SpidermanSpider(CrawlSpider):
     allowed_domains = ["shop.actionbutton.net", "llt.lulea.se", "theyard.sale"]
     start_urls = ["https://shop.actionbutton.net/", "https://www.llt.lulea.se/", "https://theyard.sale/"]
 
-    keywords ['om-','about', 'info']
+    keywords =  ['om-','about', 'info']
     rules = (
         Rule(LinkExtractor(allow=keywords), callback='parse_item', follow=True),
 
