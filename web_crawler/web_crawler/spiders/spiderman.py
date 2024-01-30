@@ -1,6 +1,7 @@
 import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
+#måste installera "pip install beautifulsoup4"
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
