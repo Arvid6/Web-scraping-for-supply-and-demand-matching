@@ -2,17 +2,23 @@ from serpapi import GoogleSearch
 
 swag = ["Pizza", "Burger", "Pasta"]
 numr = 4 # NUMBER OF RESULTS
+loc = "Lulea, Norrbotten County, Sweden"
 
 def setSearch(txt):
     global swag
     swag = txt
 
 
+def setLoc(txt):
+    global loc
+    loc = txt
+
+
 def getSeach():
     for word in swag:
         params = {
           "q": word,
-          "location": "Lulea, Norrbotten County, Sweden", # OPTIONAL
+          "location": loc, # OPTIONAL
           "hl": "sv", # OPTIONAL
           "gl": "se", # OPTIONAL
           "google_domain": "google.se",
