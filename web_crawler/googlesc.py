@@ -1,6 +1,7 @@
 from serpapi import GoogleSearch
 
 swag = ["Pizza", "Burger", "Pasta"]
+numr = 4 # NUMBER OF RESULTS
 
 def setSearch(txt):
     global swag
@@ -24,7 +25,7 @@ def getSeach():
         organic_results = results.get('organic_results', [])
 
         # NUMBER OF RESULTS
-        urls = [result.get('link') for result in organic_results[:4]]
+        urls = [result.get('link') for result in organic_results[:numr]]
 
         print(f"Search word: {word} ")
         print(urls)
