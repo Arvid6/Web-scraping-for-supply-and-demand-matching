@@ -1,15 +1,19 @@
 from scrapy.crawler import CrawlerProcess
-from web_crawler.googlesc import getSeach
+from googlesc import getSeach
 from web_crawler.spiders.spiderman import SpidermanSpider
+#from nace import kys
 
-urls = getSeach(["Umida Brands AB", "Urban Market Stockholm AB", "FRKY Foods AB",], 1)
+#gudsord = [] #call to nace
 
-allowed_domains = ["example.com", "anotherexample.com"]
-start_urls = urls
+#for x in gudsord:
+start_urls = getSeach("Umida Brands AB", 3)
+print(start_urls)
 process = CrawlerProcess(settings={
-    'assistant': 'my_bot',
+    'assistant': 'spiderman',
     'ROBOTSTXT_OBEY': True,
+    'FEED_FORMAT': 'json',  # specify the output format
+    'FEED_URI': 'output.json'  # specify the output file
 })
 
-process.crawl(SpidermanSpider, allowed_domains=allowed_domains, start_urls=start_urls)
+process.crawl(SpidermanSpider, start_urls=start_urls)
 process.start()  # the script will block here until the crawling is finished

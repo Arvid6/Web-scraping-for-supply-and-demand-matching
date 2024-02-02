@@ -4,20 +4,21 @@ from scrapy import Request
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from bs4 import BeautifulSoup
+from urllib.parse import urlparse
 
 
 class SpidermanSpider(CrawlSpider):
     name = "spiderman"
-    def __init__(self, allowed_domains=None, start_urls=None, *args, **kwargs):
+    def __init__(self, start_urls=None, *args, **kwargs):
         super(SpidermanSpider, self).__init__(*args, **kwargs)
-        self.allowed_domains = allowed_domains if allowed_domains else []
         self.start_urls = start_urls if start_urls else []
+        self.allowed_domains = [urlparse(url).netloc for url in self.start_urls]
 
-    # keywords =  ['om-','about', 'info']
+    keywords =  ['om-','about', 'info']
     rules = (
-        #Rule(LinkExtractor(allow=keywords), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow=keywords), callback='parse_item', follow=True),
 
-        Rule(LinkExtractor(), callback='parse_item', follow=True),
+        #Rule(LinkExtractor(), callback='parse_item', follow=True),
     )
 
     def parse_item(self, response):
