@@ -1,5 +1,5 @@
+# pip install serpapi FÖRST
 # pip install google-search-results
-# om den inte funkar efter den installen kör pip install serpapi
 from serpapi import GoogleSearch
 
 def getSeach(swag, num):

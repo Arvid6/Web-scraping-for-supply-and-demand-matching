@@ -1,0 +1,4 @@
+pip install scrapy
+pip install beautifulsoup4
+pip install serpapi
+pip install google-search-results (MÅSTE GÖRAS EFTER SERPAPI)
