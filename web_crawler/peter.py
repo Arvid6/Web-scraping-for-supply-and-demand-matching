@@ -1,19 +1,24 @@
 from scrapy.crawler import CrawlerProcess
 from googlesc import getSeach
 from web_crawler.spiders.spiderman import SpidermanSpider
-#from nace import kys
+from nace import getNace
 
-#gudsord = [] #call to nace
+def webCrawler(nt, reg):
+    gudsord = getNace(nt, reg) #["Umida Brands AB", "FRKY Foods AB", "Gutang Handelsbolag"] # GET COMPANY NAMES
+    start_urls = []
 
-#for x in gudsord:
-start_urls = getSeach("Umida Brands AB", 3)
-print(start_urls)
-process = CrawlerProcess(settings={
-    'assistant': 'spiderman',
-    'ROBOTSTXT_OBEY': True,
-    'FEED_FORMAT': 'json',  # specify the output format
-    'FEED_URI': 'output.json'  # specify the output file
-})
+    for x in gudsord:
+        start_urls.extend(getSeach(x, 3)) # GEt URLS FROM SEARCH WORDS
+        # print(start_urls)
+    process = CrawlerProcess(settings={
+        'assistant': 'spiderman',
+        'ROBOTSTXT_OBEY': True,
+        'FEED_FORMAT': 'json',  # OUTPUT FORMAT
+        'FEED_URI': 'output.json'  # OUTPUT FILE
+    })
 
-process.crawl(SpidermanSpider, start_urls=start_urls)
-process.start()  # the script will block here until the crawling is finished
+    process.crawl(SpidermanSpider, start_urls=start_urls)
+    process.start()  # START THE CRAWL
+
+
+webCrawler('0111000', 'Stockholm')

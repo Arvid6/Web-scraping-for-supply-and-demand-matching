@@ -17,8 +17,7 @@ def getSeach(swag, num):
 
     organic_results = results.get('organic_results', [])
 
-    # NUMBER OF RESULTS
-    urls = [result.get('link') for result in organic_results[:num]]
+    urls = [result.get('link') for result in organic_results[:num]] # NUMBER OF RESULTS
 
     return urls
 
