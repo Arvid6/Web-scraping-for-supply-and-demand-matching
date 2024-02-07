@@ -48,4 +48,4 @@ def getNace(nace_code, region):
 
 
 naces = getNace("10840", "Stockholm")
-print(naces)
+#print(naces)

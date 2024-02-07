@@ -3,9 +3,10 @@
 from serpapi import GoogleSearch
 
 def getSeach(swag, num):
+    blacklist = ["allabolag.se", "merinfo.se", "bolagsfakta.se", "proff.se", "hitta.se", "ratsit.se", "creditsafe.com"]
     params = {
         "q": swag,
-        #"location": loc,  # OPTIONAL
+        "location": "Stockholm County, Sweden",  # OPTIONAL
         "hl": "sv",  # OPTIONAL
         "gl": "se",  # OPTIONAL
         "google_domain": "google.se",
@@ -17,7 +18,9 @@ def getSeach(swag, num):
 
     organic_results = results.get('organic_results', [])
 
-    urls = [result.get('link') for result in organic_results[:num]] # NUMBER OF RESULTS
+    filtered_results = [result for result in organic_results if not any(blacklisted in result.get('link', '') for blacklisted in blacklist)]
+
+    urls = [result.get('link') for result in filtered_results[:num]] # NUMBER OF RESULTS
 
     return urls
 
