@@ -3,7 +3,7 @@
 from serpapi import GoogleSearch
 
 def getSeach(swag, num):
-    blacklist = ["allabolag.se", "merinfo.se", "bolagsfakta.se", "proff.se", "hitta.se", "ratsit.se", "creditsafe.com"]
+    blacklist = ["allabolag.se", "merinfo.se", "bolagsfakta.se", "proff.se", "hitta.se", "ratsit.se", "creditsafe.com", "s360digital.com", "vinjournalen.se", "largestcompanies.com", "axfood.se", "facebook.com", "instagram.com", "wikipedia.org", "infoo.se"]
     params = {
         "q": swag,
         "location": "Stockholm County, Sweden",  # OPTIONAL
