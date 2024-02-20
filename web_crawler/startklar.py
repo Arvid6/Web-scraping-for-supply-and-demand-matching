@@ -16,9 +16,9 @@ root = customtkinter.CTk()
 root.geometry("1000x700") #storlek på fönstret 
 
 def knappfunk(): #funktion för vad som händer när man klickar på knappen
-    #webCrawler(naceval.get(), neighbor.get())
+    #webCrawler(nacetemp[nacekoder[int(thecode)]], neighbor.get())
     #print(nacekoder[int(thecode)])
-    print(nacetemp[nacekoder[int(thecode)]]) # skriver ut nacekoden
+    print(nacetemp[nacekoder[int(thecode)]], neighbor.get()) #skriver ut nacekoden
     #print(entrytest.get())
     #print(naceval.get())
 
@@ -26,10 +26,10 @@ def thenacecode(variable):
     global last_button
     global thecode 
     if last_button:
-        last_button.configure(fg_color="white")  # Reset the last button color
-    scbutton = buttons[variable]  # Get the current button
-    scbutton.configure(fg_color="#7a97ff")  # Change the current button color | grön = #71de85
-    last_button = scbutton  # Update the last button
+        last_button.configure(fg_color="white")  #byt tbx till förra färgen
+    scbutton = buttons[variable]  #hämtar nuvarande knapp
+    scbutton.configure(fg_color="#7a97ff")  #ändrar nuvarande knapps färg | grön = #71de85
+    last_button = scbutton  #uppdatera förra knappen
     thecode = variable
     #print(variable)
 
@@ -50,7 +50,7 @@ neighbor.pack(pady=1, padx=10)
 my_frame = customtkinter.CTkScrollableFrame(master=frame, width=600, height=400)
 my_frame.pack(padx=20, pady=10)
 for x in range(len(nacekoder)):
-    scbutton = customtkinter.CTkButton(my_frame, text=nacekoder[x], height= 5, corner_radius=0, width=800, fg_color="white", text_color="black", anchor="w", command=lambda x=x:thenacecode(x))
+    scbutton = customtkinter.CTkButton(my_frame, text=nacekoder[x], height= 5, corner_radius=0, width=800, fg_color="white", text_color="black", anchor="w", command=lambda x=x:thenacecode(x)) #för att få knapparan att fungera
     scbutton.pack(pady=0)
     buttons.append(scbutton)
 
