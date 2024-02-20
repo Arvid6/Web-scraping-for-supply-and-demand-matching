@@ -8,8 +8,8 @@ def getNace(nace_code, region):
     url = "https://privateapi.scb.se/nv0101/v1/sokpavar/api/Je/HamtaForetag"
 
     # Path to certificate and private key.
-    cert_file_path = os.path.abspath("test_cert.crt")
-    private_key_path = os.path.abspath("test_key3.pem")
+    cert_file_path = os.path.abspath("nyttcrt.crt")
+    private_key_path = os.path.abspath("nykey3.pem")
 
     # Arguments to be sent to the API
     search_city = "Stockholm"
