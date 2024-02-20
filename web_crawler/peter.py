@@ -11,7 +11,15 @@ def webCrawler(nt, reg):
     for x in gudsord:
         start_urls.extend(getSeach(x, 3)) # GET URLS FROM SEARCH WORDS
         print(start_urls)
+    process = CrawlerProcess(settings={
+        'assistant': 'spiderman',
+        'ROBOTSTXT_OBEY': True,
+        'FEED_FORMAT': 'json',  # OUTPUT FORMAT
+        'FEED_URI': 'output.json'  # OUTPUT FILE
+    })
 
+    process.crawl(SpidermanSpider, start_urls=start_urls)
+    process.start()  # START THE CRAWL
 
 
 webCrawler('26300', 'Stockholm')
