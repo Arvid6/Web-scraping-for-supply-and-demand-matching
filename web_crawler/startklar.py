@@ -1,4 +1,5 @@
 import customtkinter
+import peter
 
 customtkinter.set_appearance_mode("system")
 customtkinter.set_default_color_theme("dark-blue") #can have blue also
