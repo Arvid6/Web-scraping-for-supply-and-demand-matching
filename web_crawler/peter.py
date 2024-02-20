@@ -9,7 +9,7 @@ def webCrawler(nt, reg):
     print(gudsord)
 
     for x in gudsord:
-        start_urls.extend(getSeach(x, 3)) # GET URLS FROM SEARCH WORDS
+        start_urls.extend(getSeach(x, 2)) # GET URLS FROM SEARCH WORDS
         print(start_urls)
     process = CrawlerProcess(settings={
         'assistant': 'spiderman',
