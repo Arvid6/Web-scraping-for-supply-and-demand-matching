@@ -1,38 +1,61 @@
 import customtkinter
-from peter import webCrawler
+import tkinter
+#from peter import webCrawler
+from  exceltodictionary import valuesfordropdown #val i dropdown meny
 
 customtkinter.set_appearance_mode("system")
-customtkinter.set_default_color_theme("dark-blue") #can have blue also
+customtkinter.set_default_color_theme("green") #can have blue also
 
-nacekoder = ["nacecode 1", "nacecode 2"] #val i dropdown meny
+#val i dropdown meny
+nacetemp = valuesfordropdown()
+nacekoder = list(nacetemp.keys())
+last_button = None
+buttons = []
 
 root = customtkinter.CTk()
 root.geometry("1000x700") #storlek på fönstret 
 
 def knappfunk(): #funktion för vad som händer när man klickar på knappen
-    webCrawler(naceval.get(), neighbor.get())
-    #print("hello")
+    #webCrawler(naceval.get(), neighbor.get())
+    #print(nacekoder[int(thecode)])
+    print(nacetemp[nacekoder[int(thecode)]]) # skriver ut nacekoden
     #print(entrytest.get())
     #print(naceval.get())
+
+def thenacecode(variable):
+    global last_button
+    global thecode 
+    if last_button:
+        last_button.configure(fg_color="white")  # Reset the last button color
+    scbutton = buttons[variable]  # Get the current button
+    scbutton.configure(fg_color="#7a97ff")  # Change the current button color | grön = #71de85
+    last_button = scbutton  # Update the last button
+    thecode = variable
+    #print(variable)
 
 root.title("CompSearch")
 
 frame = customtkinter.CTkFrame(master=root)
-frame.pack(pady=20, padx=60, fill="both", expand=True)
+frame.pack(pady=30, padx=60, fill="both", expand=True)
 
-label = customtkinter.CTkLabel(master=frame, text="Fyll i dina Nace koder")
+label = customtkinter.CTkLabel(master=frame, text="Welcome to CompSerch")
 label.pack(pady=12, padx=10)
 
-neighbor = customtkinter.CTkEntry(master=frame, placeholder_text="TEST") 
-neighbor.pack(pady=12, padx=10)
+label = customtkinter.CTkLabel(master=frame, text="Fill in the region")
+label.pack(pady=1, padx=10)
 
-naceval = customtkinter.CTkOptionMenu(master=frame, values=nacekoder)
-naceval.pack(padx=20, pady=10)
-naceval.set("choose nace code")  #välj starttext
+neighbor = customtkinter.CTkEntry(master=frame, placeholder_text="Region", width=400) 
+neighbor.pack(pady=1, padx=10)
 
-button = customtkinter.CTkButton(master=frame, text="tesssset", command=lambda:knappfunk()) #lambda gör så att programmet körs när man klickar på knappen
+my_frame = customtkinter.CTkScrollableFrame(master=frame, width=600, height=400)
+my_frame.pack(padx=20, pady=10)
+for x in range(len(nacekoder)):
+    scbutton = customtkinter.CTkButton(my_frame, text=nacekoder[x], height= 5, corner_radius=0, width=800, fg_color="white", text_color="black", anchor="w", command=lambda x=x:thenacecode(x))
+    scbutton.pack(pady=0)
+    buttons.append(scbutton)
+
+button = customtkinter.CTkButton(master=frame, text="Submit", command=lambda:knappfunk()) #lambda gör så att programmet körs när man klickar på knappen
 button.pack(pady=12, padx=10)
-
 
 #startar fönstret
 root.wm_attributes("-toolwindow", "True") #Tar bort standardbilden i fönstret
