@@ -5,3 +5,4 @@ pip install ujson
 pip install serpapi
 pip install google-search-results (GÖR EFTER SERAPI)
 pip install customtkinter
+pip install scrapy-zyte-smartproxy
