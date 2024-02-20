@@ -1,5 +1,5 @@
 from scrapy.crawler import CrawlerProcess
-from googlesc import getSeach
+from googlecs import getSeach
 from web_crawler.spiders.spiderman import SpidermanSpider
 from nace import getNace
 
