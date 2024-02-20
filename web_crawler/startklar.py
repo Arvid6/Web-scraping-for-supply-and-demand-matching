@@ -9,15 +9,34 @@ customtkinter.set_default_color_theme("green") #can have blue also
 nacetemp = valuesfordropdown()
 nacekoder = list(nacetemp.keys())
 last_button = None
+thecode = None
 buttons = []
+label2 = None
+strignumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 root = customtkinter.CTk()
 root.geometry("1000x700") #storlek på fönstret 
 
 def knappfunk(): #funktion för vad som händer när man klickar på knappen
-    #webCrawler(nacetemp[nacekoder[int(thecode)]], neighbor.get())
+    global label2
+    global thecode
+    global strignumber
+    if label2 is not None:
+        label2.destroy()
+    if len(neighbor.get()) < 2:
+        label2 = customtkinter.CTkLabel(master=frame, text="You need more characters in Region", text_color="red")
+        label2.pack(pady=1, padx=10)
+    elif thecode is None:
+        label2 = customtkinter.CTkLabel(master=frame, text="You need to pick a Nace code", text_color="red")
+        label2.pack(pady=1, padx=10)
+    elif any(num in neighbor.get() for num in strignumber):
+        label2 = customtkinter.CTkLabel(master=frame, text="The region cant have a nuber in it", text_color="red")
+        label2.pack(pady=1, padx=10)
+    else:
+        print(nacetemp[nacekoder[int(thecode)]], neighbor.get()) #skriver ut nacekoden
+    
+    #webCrawler(nacetemp[nacekkpoder[int(thecode)]], neighbor.get())
     #print(nacekoder[int(thecode)])
-    print(nacetemp[nacekoder[int(thecode)]], neighbor.get()) #skriver ut nacekoden
     #print(entrytest.get())
     #print(naceval.get())
 
@@ -59,3 +78,4 @@ button.pack(pady=12, padx=10)
 #startar fönstret
 root.wm_attributes("-toolwindow", "True") #Tar bort standardbilden i fönstret
 root.mainloop()
+
