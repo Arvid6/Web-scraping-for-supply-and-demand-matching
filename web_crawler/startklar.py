@@ -1,5 +1,4 @@
 import customtkinter
-import tkinter
 #from peter import webCrawler
 from  exceltodictionary import valuesfordropdown #val i dropdown meny
 
