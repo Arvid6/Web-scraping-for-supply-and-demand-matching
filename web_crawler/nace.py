@@ -30,7 +30,7 @@ def getNace(nace_code, region):
                  "Kategorier": [{"Kategori": "Bransch", "Kod": [nace_code, nace_code], "BranschNiva": "3"}]}
 
     # Call to the API
-    session.mount('https://privateapi.scb.se', Pkcs12Adapter(pkcs12_filename=cert_pfx, pkcs12_password='tf5w43yWuji4'))
+    session.mount('https://privateapi.scb.se', Pkcs12Adapter(pkcs12_filename=cert_pfx, pkcs12_password=''))
     response = session.post(url, json=data_test)
 
     # Response from API saved as a JSON-file
