@@ -1,27 +1,37 @@
 import requests
 import json
 import os
+from requests import Session
+from requests_pkcs12 import Pkcs12Adapter
 
+def find_cert():
+
+    directory = os.getcwd()
+    files = os.listdir(directory)
+    cert_name = [file for file in files if file.startswith("Certifkat") or file.endswith(".pfx")]
+    for file in cert_name:
+        cert_path = os.path.abspath(file)
+    return cert_path
 
 def getNace(nace_code, region):
+
+    session = Session()
+
     # API url
     url = "https://privateapi.scb.se/nv0101/v1/sokpavar/api/Je/HamtaForetag"
 
     # Path to certificate and private key.
-    cert_file_path = os.path.abspath("nyttcrt.crt")
-    private_key_path = os.path.abspath("nykey3.pem")
+    cert_pfx = find_cert()
 
     # Arguments to be sent to the API
-    search_city = "Stockholm"
-    search_nace = "10840"
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     data_test = {"Arbetsställestatus": "1",
                  "Variabler": [{"Varde1": region, "Operator": "ArLikaMed", "Variabel": "Postort"}],
                  "Kategorier": [{"Kategori": "Bransch", "Kod": [nace_code, nace_code], "BranschNiva": "3"}]}
 
     # Call to the API
-    response = requests.post(url, cert=(cert_file_path, private_key_path,), json=data_test, headers=headers)
-    # response = requests.get(url, cert=(cert_file_path, private_key_path,), headers=headers)
+    session.mount('https://privateapi.scb.se', Pkcs12Adapter(pkcs12_filename=cert_pfx, pkcs12_password='tf5w43yWuji4'))
+    response = session.post(url, json=data_test)
 
     # Response from API saved as a JSON-file
     content = response.content
@@ -48,4 +58,4 @@ def getNace(nace_code, region):
 
 
 naces = getNace("10840", "Stockholm")
-#print(naces)
+print(naces)
