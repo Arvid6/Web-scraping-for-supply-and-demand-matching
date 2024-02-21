@@ -23,6 +23,10 @@ def getNace(nace_code, region):
     # Path to certificate and private key.
     cert_pfx = find_cert()
 
+    # Password from environment variables
+    load_dotenv()
+    api_password = os.getenv("API_KEY")
+
     # Arguments to be sent to the API
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     data_test = {"Arbetsställestatus": "1",
@@ -30,7 +34,7 @@ def getNace(nace_code, region):
                  "Kategorier": [{"Kategori": "Bransch", "Kod": [nace_code, nace_code], "BranschNiva": "3"}]}
 
     # Call to the API
-    session.mount('https://privateapi.scb.se', Pkcs12Adapter(pkcs12_filename=cert_pfx, pkcs12_password=''))
+    session.mount('https://privateapi.scb.se', Pkcs12Adapter(pkcs12_filename=cert_pfx, pkcs12_password=api_password))
     response = session.post(url, json=data_test)
 
     # Response from API saved as a JSON-file
