@@ -2,11 +2,13 @@
 # pip install google-search-results
 from serpapi import GoogleSearch
 
+
 def getSeach(swag, num):
     blacklist = ["allabolag.se", "merinfo.se", "bolagsfakta.se", "proff.se", "hitta.se", "ratsit.se", "creditsafe.com",
                  "s360digital.com", "vinjournalen.se", "largestcompanies.com", "axfood.se", "facebook.com",
                  "instagram.com", "wikipedia.org", "infoo.se", "arbetsformedlingen.se", "linkedin.com", "mrkoll.se",
-                 "kreditrapporten.se", "mynewsdesk.com", "largestcompanies.se", "nyteknik.se", "eniro.se", "tekniklagret.se"]
+                 "kreditrapporten.se", "mynewsdesk.com", "largestcompanies.se", "nyteknik.se", "eniro.se",
+                 "tekniklagret.se"]
     params = {
         "q": swag,
         "location": "Stockholm County, Sweden",  # OPTIONAL
@@ -21,11 +23,11 @@ def getSeach(swag, num):
 
     organic_results = results.get('organic_results', [])
 
-    filtered_results = [result for result in organic_results if not any(blacklisted in result.get('link', '') for blacklisted in blacklist)]
+    filtered_results = [result for result in organic_results if
+                        not any(blacklisted in result.get('link', '') for blacklisted in blacklist)]
 
-    urls = [result.get('link') for result in filtered_results[:num]] # NUMBER OF RESULTS
+    urls = [result.get('link') for result in filtered_results[:num]]  # NUMBER OF RESULTS
 
     return urls
 
-
-#getSeach(["Umida Brands AB", "Urban Market Stockholm AB", "FRKY Foods AB"], "Stockholm County, Sweden", 4)
+# getSeach(["Umida Brands AB", "Urban Market Stockholm AB", "FRKY Foods AB"], "Stockholm County, Sweden", 4)
