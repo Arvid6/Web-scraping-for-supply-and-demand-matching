@@ -26,11 +26,11 @@ def knappfunk(): #funktion för vad som händer när man klickar på knappen
     if len(neighbor.get()) < 2:
         label2 = customtkinter.CTkLabel(master=frame, text="You need more characters in Region", text_color="red")
         label2.pack(pady=1, padx=10)
-    elif thecode is None:
-        label2 = customtkinter.CTkLabel(master=frame, text="You need to pick a Nace code", text_color="red")
-        label2.pack(pady=1, padx=10)
     elif any(num in neighbor.get() for num in strignumber):
         label2 = customtkinter.CTkLabel(master=frame, text="The region cant have a nuber in it", text_color="red")
+        label2.pack(pady=1, padx=10)
+    elif thecode is None:
+        label2 = customtkinter.CTkLabel(master=frame, text="You need to pick a Nace code", text_color="red")
         label2.pack(pady=1, padx=10)
     else:
         print(nacetemp[nacekoder[int(thecode)]], neighbor.get()) #skriver ut nacekoden
