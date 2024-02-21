@@ -8,7 +8,8 @@ def getSeach(swag, num):
                  "s360digital.com", "vinjournalen.se", "largestcompanies.com", "axfood.se", "facebook.com",
                  "instagram.com", "wikipedia.org", "infoo.se", "arbetsformedlingen.se", "linkedin.com", "mrkoll.se",
                  "kreditrapporten.se", "mynewsdesk.com", "largestcompanies.se", "nyteknik.se", "eniro.se",
-                 "tekniklagret.se"]
+                 "tekniklagret.se", "datanyze.com", "starkabolag.se", "zoominfo.com", "bizzdo.se", "industritorget.se",
+                 "kompass.com", "twitter.com", "x.com", "wiktionary.org", "youtube.com", "spotify.com", "expressen.se"]
     params = {
         "q": swag,
         "location": "Stockholm County, Sweden",  # OPTIONAL
