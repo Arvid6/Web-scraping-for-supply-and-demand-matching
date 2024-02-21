@@ -14,7 +14,7 @@ class SpidermanSpider(CrawlSpider):
         self.start_urls = start_urls if start_urls else []
         self.allowed_domains = [urlparse(url).netloc for url in self.start_urls]
 
-    keywords =  ['om-','about', 'info', 'kontakt', 'address', "telefon", "tjänster", "services", ""]
+    keywords =  ['om-','about', 'info', 'kontakt', 'address', "telefon", "tjänster", "services"]
     rules = (
         Rule(LinkExtractor(allow=keywords), callback='parse_item', follow=True),
 
