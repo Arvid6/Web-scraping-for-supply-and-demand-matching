@@ -3,7 +3,7 @@ import json
 import os
 from requests import Session
 from requests_pkcs12 import Pkcs12Adapter
-
+from dotenv import load_dotenv
 def find_cert():
 
     directory = os.getcwd()
