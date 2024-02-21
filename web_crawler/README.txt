@@ -7,3 +7,5 @@ pip install google-search-results (GÖR EFTER SERAPI)
 pip install customtkinter
 pip install scrapy-zyte-smartproxy
 pip install openpyxl
+pip install requests_pkcs12
+pip install python-dotenv

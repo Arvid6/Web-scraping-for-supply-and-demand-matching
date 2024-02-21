@@ -6,3 +6,6 @@ web_crawler/nyttcrt.crt
 .idea/misc.xml
 .idea/D0020E.iml
 .idea/misc.xml
+web_crawler/test_cert.crt
+web_crawler/test_cert.crt
+web_crawler/test_key3.pem

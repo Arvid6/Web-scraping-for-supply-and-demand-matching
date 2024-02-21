@@ -9,19 +9,27 @@ from urllib.parse import urlparse
 
 class SpidermanSpider(CrawlSpider):
     name = "spiderman"
+    custom_settings = {
+        'DEPTH_LIMIT': 1,
+    }
+
     def __init__(self, start_urls=None, *args, **kwargs):
         super(SpidermanSpider, self).__init__(*args, **kwargs)
         self.start_urls = start_urls if start_urls else []
         self.allowed_domains = [urlparse(url).netloc for url in self.start_urls]
 
-    keywords =  ['om-','about', 'info', 'kontakt', 'address', "telefon", "tjänster", "services"]
+    keywords = ['om', 'about', 'info', 'kontakt', 'address', "telefon", "tjänster", "services"]
     rules = (
         Rule(LinkExtractor(allow=keywords), callback='parse_item', follow=True),
 
-        #Rule(LinkExtractor(), callback='parse_item', follow=True),
+        # Rule(LinkExtractor(), callback='parse_item', follow=True),
     )
 
+    def parse_start_url(self, response):
+        return self.parse_item(response)
+
     def parse_item(self, response):
+        #if any(keyword in response.url for keyword in self.keywords):
         soppa = BeautifulSoup(response.text, features="html.parser")
 
         for script in soppa(["script", "style"]):
@@ -32,4 +40,3 @@ class SpidermanSpider(CrawlSpider):
         momentan_data = " :VGQH545: " + JensAndersjuveler + " :CGDE345: "
 
         return {str(response.url)[8:]: momentan_data}
-
