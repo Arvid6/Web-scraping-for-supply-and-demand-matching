@@ -18,6 +18,10 @@ root = customtkinter.CTk()
 root.geometry("1000x700") #storlek på fönstret 
 
 def knappfunk(): #funktion för vad som händer när man klickar på knappen
+    """
+        Function to handle button click event.
+        Validates the input region and Nace code, and prints the selected Nace code and region.
+    """
     global label2
     global thecode
     global strignumber
@@ -41,6 +45,14 @@ def knappfunk(): #funktion för vad som händer när man klickar på knappen
     #print(naceval.get())
 
 def thenacecode(variable):
+    """
+        Function to handle the selection of a Nace code button.
+        Changes the appearance of the selected button and updates the selected Nace code.
+
+        Args:
+            variable (int): The index of the selected Nace code button.
+    """
+
     global last_button
     global thecode 
     if last_button:

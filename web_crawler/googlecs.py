@@ -4,6 +4,16 @@ from serpapi import GoogleSearch
 
 
 def getSeach(swag, num):
+    """
+        Get search results URLs from Google based on search words.
+
+        Args:
+            swag (str): The search word or phrase.
+            num (int): The number of search results to retrieve.
+
+        Returns:
+            list: A list of URLs representing the search results.
+    """
     blacklist = ["allabolag.se", "merinfo.se", "bolagsfakta.se", "proff.se", "hitta.se", "ratsit.se", "creditsafe.com",
                  "s360digital.com", "vinjournalen.se", "largestcompanies.com", "axfood.se", "facebook.com",
                  "instagram.com", "wikipedia.org", "infoo.se", "arbetsformedlingen.se", "linkedin.com", "mrkoll.se",

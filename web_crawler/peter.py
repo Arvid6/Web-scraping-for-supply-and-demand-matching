@@ -4,6 +4,17 @@ from web_crawler.spiders.spiderman import SpidermanSpider
 from nace import getNace
 
 def webCrawler(nt, reg):
+    """
+        Perform web crawling to gather information about companies based on NACE code and region.
+
+        Args:
+            nt (str): The NACE code for the industry.
+            reg (str): The region to search for companies in.
+
+        Returns:
+            None
+    """
+
     gudsord = getNace(nt, reg)#["Umida Brands AB", "FRKY Foods AB", "Gutang Handelsbolag"] # GET COMPANY NAMES
     start_urls = []
                 #["https://www.lpsignal.se", "https://swedtel.com", "https://mikrotema.se", "https://teamteknik.se/",

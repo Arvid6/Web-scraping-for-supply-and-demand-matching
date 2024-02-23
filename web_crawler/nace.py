@@ -5,7 +5,12 @@ from requests import Session
 from requests_pkcs12 import Pkcs12Adapter
 from dotenv import load_dotenv
 def find_cert():
+    """
+        Find the path to the certificate file in the current working directory.
 
+        Returns:
+            str: The absolute path to the SCB API certificate file.
+    """
     directory = os.getcwd()
     files = os.listdir(directory)
     cert_name = [file for file in files if file.startswith("Certifkat") or file.endswith(".pfx")]
@@ -14,7 +19,16 @@ def find_cert():
     return cert_path
 
 def getNace(nace_code, region):
+    """
+        Get company information based on NACE code and region using the SCB API.
 
+        Args:
+            nace_code (str): The NACE code for the industry.
+            region (str): The region to search for companies in.
+
+        Returns:
+            list: A list of company names matching the criteria.
+    """
     session = Session()
 
     # API url
