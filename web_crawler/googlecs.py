@@ -3,12 +3,12 @@
 from serpapi import GoogleSearch
 
 
-def getSeach(swag, num):
+def getSeach(word, num):
     """
         Get search results URLs from Google based on search words.
 
         Args:
-            swag (str): The search word or phrase.
+            word (str): The search word or phrase.
             num (int): The number of search results to retrieve.
 
         Returns:
@@ -19,9 +19,10 @@ def getSeach(swag, num):
                  "instagram.com", "wikipedia.org", "infoo.se", "arbetsformedlingen.se", "linkedin.com", "mrkoll.se",
                  "kreditrapporten.se", "mynewsdesk.com", "largestcompanies.se", "nyteknik.se", "eniro.se",
                  "tekniklagret.se", "datanyze.com", "starkabolag.se", "zoominfo.com", "bizzdo.se", "industritorget.se",
-                 "kompass.com", "twitter.com", "x.com", "wiktionary.org", "youtube.com", "spotify.com", "expressen.se"]
+                 "kompass.com", "twitter.com", "x.com", "wiktionary.org", "youtube.com", "spotify.com", "expressen.se", "infinera.com", "mau.se", "campusnykoping.se",
+                 "su.se", "gu.se"]
     params = {
-        "q": swag,
+        "q": word,
         "location": "Stockholm County, Sweden",  # OPTIONAL
         "hl": "sv",  # OPTIONAL
         "gl": "se",  # OPTIONAL

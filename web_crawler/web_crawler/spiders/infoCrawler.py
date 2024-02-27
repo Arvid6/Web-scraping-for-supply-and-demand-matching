@@ -7,18 +7,19 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
 
-class SpidermanSpider(CrawlSpider):
-    name = "spiderman"
+class infoCrawler(CrawlSpider):
+    name = "getinfo"
     custom_settings = {
         'DEPTH_LIMIT': 1,
+        'DOWNLOAD_TIMEOUT': 15,
     }
 
     def __init__(self, start_urls=None, *args, **kwargs):
-        super(SpidermanSpider, self).__init__(*args, **kwargs)
+        super(infoCrawler, self).__init__(*args, **kwargs)
         self.start_urls = start_urls if start_urls else []
         self.allowed_domains = [urlparse(url).netloc for url in self.start_urls]
 
-    keywords = ['om', 'about', 'info', 'kontakt', 'address', "telefon", "tjänster", "services"]
+    keywords = ['om-', 'about-', 'info', 'kontakt', 'address', 'telefon', 'tjänster', 'services', 'about']
     rules = (
         Rule(LinkExtractor(allow=keywords), callback='parse_item', follow=True),
 

@@ -1,6 +1,6 @@
 from scrapy.crawler import CrawlerProcess
 from googlecs import getSeach
-from web_crawler.spiders.spiderman import SpidermanSpider
+from web_crawler.spiders.infoCrawler import infoCrawler
 from nace import getNace
 
 def webCrawler(nt, reg):
@@ -15,7 +15,7 @@ def webCrawler(nt, reg):
             None
     """
 
-    gudsord = getNace(nt, reg)#["Umida Brands AB", "FRKY Foods AB", "Gutang Handelsbolag"] # GET COMPANY NAMES
+    loc = getNace(nt, reg)#["Umida Brands AB", "FRKY Foods AB", "Gutang Handelsbolag"] # GET COMPANY NAMES
     start_urls = []
                 #["https://www.lpsignal.se", "https://swedtel.com", "https://mikrotema.se", "https://teamteknik.se/",
                 #"https://tvent.se/", "https://www.airbus.com/en", "https://www.elgiganten.se/", "https://www.power.no/",
@@ -24,20 +24,20 @@ def webCrawler(nt, reg):
                 #"https://www.stadsmissionen.se/", "https://verktygsboden.se/", "https://bonaj.se/"]
 
     #https://www.jpinfonet.se/
-    print(gudsord)
+    print(loc)
 
-    for x in gudsord:
-        start_urls.extend(getSeach(x, 2)) # GET URLS FROM SEARCH WORDS
-        print(start_urls)
+    for x in loc:
+        start_urls.extend(getSeach(x, 1)) # GET URLS FROM SEARCH WORDS
 
+    print(start_urls)
     process = CrawlerProcess(settings={
-        'assistant': 'spiderman',
-        'ROBOTSTXT_OBEY': True,
+        'assistant': 'getinfo',
+        'ROBOTSTXT_OBEY': False,
         'FEED_FORMAT': 'json',  # OUTPUT FORMAT
         'FEED_URI': 'output.json'  # OUTPUT FILE
     })
 
-    process.crawl(SpidermanSpider, start_urls=start_urls)
+    process.crawl(infoCrawler, start_urls=start_urls)
     process.start()  # START THE CRAWL
 
 
