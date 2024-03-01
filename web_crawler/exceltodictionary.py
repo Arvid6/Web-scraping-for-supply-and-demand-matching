@@ -2,7 +2,7 @@
 import openpyxl
 import json 
 
-loadpynace = openpyxl.load_workbook("web_crawler/nacevalixl.xlsx")
+loadpynace = openpyxl.load_workbook("web_crawler/latestnacecode.xlsx")
 
 callnace = loadpynace.active
 
