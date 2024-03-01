@@ -11,7 +11,7 @@ class infoCrawler(CrawlSpider):
     name = "getinfo"
     custom_settings = {
         'DEPTH_LIMIT': 1,
-        'DOWNLOAD_TIMEOUT': 15,
+        'DOWNLOAD_TIMEOUT': 10,
     }
 
     def __init__(self, start_urls=None, *args, **kwargs):
