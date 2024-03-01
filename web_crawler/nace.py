@@ -75,5 +75,5 @@ def getNace(nace_code, region):
     return temp_list
 
 
-naces = getNace("10840", "Stockholm")
-print(naces)
+#naces = getNace("10840", "Stockholm")
+#print(naces)

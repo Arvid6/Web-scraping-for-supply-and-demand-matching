@@ -1,6 +1,6 @@
 import customtkinter
-#from peter import webCrawler
-from  exceltodictionary import valuesfordropdown #val i dropdown meny
+from webCrawlerMain import webCrawler
+from exceltodictionary import valuesfordropdown #val i dropdown meny
 
 customtkinter.set_appearance_mode("system")
 customtkinter.set_default_color_theme("green") #can have blue also
@@ -38,8 +38,8 @@ def knappfunk(): #funktion för vad som händer när man klickar på knappen
         label2.pack(pady=1, padx=10)
     else:
         print(nacetemp[nacekoder[int(thecode)]], neighbor.get()) #skriver ut nacekoden
-    
-    #webCrawler(nacetemp[nacekkpoder[int(thecode)]], neighbor.get())
+
+    #webCrawler(nacetemp[nacekoder[int(thecode)]], neighbor.get())
     #print(nacekoder[int(thecode)])
     #print(entrytest.get())
     #print(naceval.get())

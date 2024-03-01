@@ -41,4 +41,4 @@ def webCrawler(nt, reg):
     process.start()  # START THE CRAWL
 
 
-webCrawler('26300', 'Stockholm')
+#('26300', 'Stockholm')
