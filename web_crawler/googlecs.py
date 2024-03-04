@@ -3,7 +3,7 @@
 from serpapi import GoogleSearch
 
 
-def getSeach(word, num):
+def getSeach(word, num, reg):
     """
         Get search results URLs from Google based on search words.
 
@@ -23,7 +23,7 @@ def getSeach(word, num):
                  "su.se", "gu.se"]
     params = {
         "q": word,
-        "location": "Stockholm County, Sweden",  # OPTIONAL
+        "location": reg,  # OPTIONAL
         "hl": "sv",  # OPTIONAL
         "gl": "se",  # OPTIONAL
         "google_domain": "google.se",

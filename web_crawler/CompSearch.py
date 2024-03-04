@@ -38,8 +38,9 @@ def knappfunk(): #funktion för vad som händer när man klickar på knappen
         label2.pack(pady=1, padx=10)
     else:
         print(nacetemp[nacekoder[int(thecode)]], neighbor.get()) #skriver ut nacekoden
+        webCrawler(nacetemp[nacekoder[int(thecode)]], neighbor.get())
 
-    #webCrawler(nacetemp[nacekoder[int(thecode)]], neighbor.get())
+
     #print(nacekoder[int(thecode)])
     #print(entrytest.get())
     #print(naceval.get())

@@ -27,7 +27,8 @@ def webCrawler(nt, reg):
     print(loc)
 
     for x in loc:
-        start_urls.extend(getSeach(x, 1)) # GET URLS FROM SEARCH WORDS
+        start_urls.extend(getSeach(x, 1, "Stockholm County, Sweden")) # GET URLS FROM SEARCH WORDS
+        print(x)
 
     print(start_urls)
     process = CrawlerProcess(settings={
