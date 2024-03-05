@@ -38,6 +38,6 @@ class infoCrawler(CrawlSpider):
 
         JensAndersjuveler = ' '.join(chunk for chunk in soppa.get_text().split() if chunk)
 
-        momentan_data = " :VGQH545: " + JensAndersjuveler + " :CGDE345: "
+        momentan_data = JensAndersjuveler
 
         return {str(response.url)[8:]: momentan_data}
